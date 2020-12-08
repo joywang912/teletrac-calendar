@@ -4,11 +4,15 @@
   --blue-1: #1d39c4;
   --blue-2: #061178;
   --purple-1: #531dab;
+  --red: #fa541c;
+  --grey-background: #f0f0f0;
+  --grey-hover: #e6e6e6;
 }
 
 .app {
   color: #333;
   background-color: #fff;
+  min-width: 380px;
 
   .left-conatiner {
     background: linear-gradient(to bottom, var(--purple-1), var(--blue-1));
