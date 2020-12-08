@@ -1,4 +1,17 @@
-.App {
-  min-width: 380px;
+@import "~bootstrap/scss/bootstrap";
+
+:root {
+  --blue-1: #1d39c4;
+  --blue-2: #061178;
+  --purple-1: #531dab;
+}
+
+.app {
   color: #333;
+  background-color: #fff;
+
+  .left-conatiner {
+    background: linear-gradient(to bottom, var(--purple-1), var(--blue-1));
+    color: #fff;
+  }
 }
