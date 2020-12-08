@@ -1,5 +1,6 @@
 import './App.scss';
 import Calendar from './components/Calendar';
+import TodoSummary from './components/TodoSummary';
 import Weather from './components/Weather';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         </div>
         <div className="col-md-8" >
           <Calendar />
+          <TodoSummary />
         </div>
       </div>
     </div>

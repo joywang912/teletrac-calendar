@@ -1,0 +1,27 @@
+.todo-summary {
+  padding: 1rem 4rem;
+  .summary-item {
+    text-transform: capitalize;
+    font-size: 1.6rem;
+
+    &--completed {
+      color: var(--green);
+    }
+
+    &--postponed {
+      color: var(--yellow);
+    }
+
+    &--undone {
+      color: var(--red);
+    }
+
+    &--all {
+      color: var(--grey-text);
+    }
+
+    &__count {
+      font-size: 2.5rem;
+    }
+  }
+}
