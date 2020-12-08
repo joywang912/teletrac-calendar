@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchWeather } from '../../actions/weather';
+import { fetchWeather } from '../../api/weather';
 import './weather.scss';
 
 interface WeatherCurrent {
