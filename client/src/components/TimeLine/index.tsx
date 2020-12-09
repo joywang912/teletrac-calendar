@@ -1,18 +1,13 @@
 import { useState } from 'react';
-import { Timeline, TimelineEvent } from 'react-event-timeline';
 import moment, { Moment } from 'moment';
 import { connect } from "react-redux";
 import { RootState } from '../../store';
 import { ToDo } from '../../store/todo/types';
 import './timeLine.scss';
 import EditTodoModal from './EditTodoModal';
+import TimeLineEvents from './TimeLineEvents';
 
-const ICON_COLOR = {
-    'completed': 'var(--green)',
-    'postponed': 'var(--yellow)',
-    'undone': 'var(--red)',
-    '': 'var(--blue)'
-};
+
 const TimeLine = (props: Props) => {
     const { todoList, dateSelected } = props;
     const todosSelectedDay = todoList.filter((el: ToDo) => {
@@ -21,54 +16,21 @@ const TimeLine = (props: Props) => {
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [editTodo, setEditTodo] = useState<ToDo>();
-    const handleIconClick = (dueDate: Moment) => {
-        const editTodoItem = todoList.find(el => el.dueDate === dueDate);
+
+    const handleIconClick = (id: number) => {
+        const editTodoItem = todoList.find(el => el.id === id);
         if (editTodoItem) {
             setEditTodo(editTodoItem);
             setShowEditModal(true);
         }
     };
 
-    if (!todosSelectedDay.length) {
-        return <div className="time-line">No To Do Event</div>;
-    }
-
     return <div className="time-line">
         <div className="time-line-date">
             <div>{dateSelected.format('DD MMMM')}</div>
             <h3>{dateSelected.format('dddd')}</h3>
         </div>
-        <Timeline style={{
-            width: 'auto',
-            display: 'inline-block'
-        }}>
-            {todosSelectedDay.map((todo, idx) => {
-                return <TimelineEvent
-                    key={idx}
-                    title={<div className="timeline-description">
-                        {todo.description}
-                    </div>}
-                    createdAt=""
-                    icon={
-                        <i className="timeline-icon" onClick={() => handleIconClick(todo.dueDate)}>
-                            {moment(todo.dueDate).format('HH:mm')}
-                        </i>
-                    }
-                    bubbleStyle={{
-                        backgroundColor: ICON_COLOR[todo.state],
-                        border: 'none',
-                        borderRadius: '45%',
-                        width: '3.5rem',
-                        height: '2.5rem'
-                    }}
-                    iconStyle={{
-                        width: '3.5rem',
-                        height: '2.5rem'
-                    }}
-                />;
-            })
-            }
-        </Timeline>
+        <TimeLineEvents todosSelectedDay={todosSelectedDay} handleIconClick={handleIconClick} />
         {
             editTodo &&
             <EditTodoModal show={showEditModal} handleClose={() => setShowEditModal(false)} todo={editTodo} />

@@ -27,7 +27,7 @@
     {
       "dueDate": "2020-12-10T08:22:03.206Z",
       "description": "test todo 5",
-      "state": "undone",
+      "state": "completed",
       "id": 5
     },
     {

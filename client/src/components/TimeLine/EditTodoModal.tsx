@@ -37,26 +37,29 @@ const EditTodoModal = (props: Props) => {
             <Modal.Title>Edit Todo State</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <div>{todo.description}</div>
-            <div>{selectedValue}</div>
-            <div>
-                <label htmlFor="editTodoState" className="form-label">State:</label>
-                <select
-                    value={selectedValue}
-                    onChange={(e: any) => setSelectedValue(e.target.value)}
-                    className="form-control"
-                    id="editTodoState" >
-                    {
-                        options.map((option, idx) => {
-                            return <option
-                                key={idx}
-                                value={option.value}
-                            >
-                                {option.displayName}
-                            </option>;
-                        })
-                    }
-                </select>
+            <div className="edit-todo-form" >
+                <label>Description:</label>
+                <p>{todo.description}</p>
+                <div>
+                    <label htmlFor="editTodoState" className="form-label">State:</label>
+                    <select
+                        value={selectedValue}
+                        onChange={(e: any) => setSelectedValue(e.target.value)}
+                        className="form-control"
+                        id="editTodoState" >
+                        {
+                            options.map((option, idx) => {
+                                return <option
+                                    key={idx}
+                                    value={option.value}
+                                    disabled={option.value === selectedValue}
+                                >
+                                    {option.displayName}
+                                </option>;
+                            })
+                        }
+                    </select>
+                </div>
             </div>
         </Modal.Body>
         <Modal.Footer>
