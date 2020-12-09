@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
 import moment, { Moment } from 'moment';
 import { connect } from "react-redux";
 import { RootState } from '../../store';
 import { ToDo } from '../../store/todo/types';
 import './timeLine.scss';
+import EditTodoModal from './EditTodoModal';
 
 const ICON_COLOR = {
     'completed': 'var(--green)',
@@ -16,6 +18,16 @@ const TimeLine = (props: Props) => {
     const todosSelectedDay = todoList.filter((el: ToDo) => {
         return moment(el.dueDate).isSame(dateSelected, 'day');
     });
+
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [editTodo, setEditTodo] = useState<ToDo>();
+    const handleIconClick = (dueDate: Moment) => {
+        const editTodoItem = todoList.find(el => el.dueDate === dueDate);
+        if (editTodoItem) {
+            setEditTodo(editTodoItem);
+            setShowEditModal(true);
+        }
+    };
 
     if (!todosSelectedDay.length) {
         return <div className="time-line">No To Do Event</div>;
@@ -37,7 +49,11 @@ const TimeLine = (props: Props) => {
                         {todo.description}
                     </div>}
                     createdAt=""
-                    icon={<i className="timeline-icon">{moment(todo.dueDate).format('HH:mm')}</i>}
+                    icon={
+                        <i className="timeline-icon" onClick={() => handleIconClick(todo.dueDate)}>
+                            {moment(todo.dueDate).format('HH:mm')}
+                        </i>
+                    }
                     bubbleStyle={{
                         backgroundColor: ICON_COLOR[todo.state],
                         border: 'none',
@@ -53,6 +69,10 @@ const TimeLine = (props: Props) => {
             })
             }
         </Timeline>
+        {
+            editTodo &&
+            <EditTodoModal show={showEditModal} handleClose={() => setShowEditModal(false)} todo={editTodo} />
+        }
     </div>;
 };
 

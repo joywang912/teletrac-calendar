@@ -22,7 +22,7 @@ const AddTodoModal = (props: Props) => {
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        createTodo({ dueDate: dueDateTime, description, state: '' });
+        createTodo({ dueDate: dueDateTime, description, state: '', id: 0 });
         handleClose();
     };
 

@@ -27,7 +27,7 @@
     {
       "dueDate": "2020-12-10T08:22:03.206Z",
       "description": "test todo 5",
-      "state": "",
+      "state": "undone",
       "id": 5
     },
     {
@@ -39,8 +39,26 @@
     {
       "dueDate": "2020-12-10T08:37:08.344Z",
       "description": "description",
-      "state": "",
+      "state": "postponed",
       "id": 7
+    },
+    {
+      "dueDate": "2020-12-24T10:10:38.687Z",
+      "description": "description",
+      "state": "",
+      "id": 8
+    },
+    {
+      "dueDate": "2020-12-25T10:10:55.975Z",
+      "description": "description",
+      "state": "undone",
+      "id": 9
+    },
+    {
+      "dueDate": "2020-12-25T10:10:55.975Z",
+      "description": "description",
+      "state": "",
+      "id": 10
     }
   ]
 }
