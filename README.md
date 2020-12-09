@@ -1,8 +1,19 @@
-# Getting Started with Create React App
+# Teletrac Calendar
+Contains two project: 
+- server
+- client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Service Project
 
-## Available Scripts
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3001](http://localhost:3001) to start the local server with mock JSON API
+
+
+## Client Project
 
 In the project directory, you can run:
 
