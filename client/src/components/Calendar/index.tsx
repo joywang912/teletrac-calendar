@@ -1,22 +1,35 @@
-import { useState } from 'react';
+import { connect } from "react-redux";
 import ReactCalendar from 'react-calendar';
-// import 'react-calendar/dist/Calendar.css';
+import { RootState } from '../../store';
+import { selectDate } from '../../store/dateSelected/actions';
+import moment, { Moment } from 'moment';
 import './calendar.scss';
 
-
-const Calendar = () => {
-    const [date, setDate] = useState(new Date());
+const Calendar = (props: Props) => {
+    const { dateSelected, selectDate } = props;
 
     const onDateChange = (value: Date) => {
-        setDate(value);
+        selectDate(moment(value));
     };
 
     return <div className="calendar">
         <ReactCalendar
             onClickDay={onDateChange}
-            value={date}
+            value={dateSelected?.toDate()}
         />
     </div>;
 };
 
-export default Calendar;
+const mapStateToProps = (state: RootState) => {
+    return {
+        dateSelected: state.dateSelected
+    };
+};
+
+interface Props {
+    dateSelected: Moment;
+    selectDate: (date: Moment) => void;
+}
+
+
+export default connect(mapStateToProps, { selectDate })(Calendar);
