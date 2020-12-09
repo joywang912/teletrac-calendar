@@ -17,8 +17,11 @@ const TimeLine = (props: Props) => {
         return moment(el.dueDate).isSame(moment(), 'day');
     });
 
-    return <div>
-        <Timeline>
+    return <div className="time-line">
+        <Timeline style={{
+            width: 'auto',
+            display: 'inline-block'
+        }}>
             {todosSelectedDay.map((todo, idx) => {
                 return <TimelineEvent
                     key={idx}
@@ -29,7 +32,14 @@ const TimeLine = (props: Props) => {
                     icon={<i className="timeline-icon">{moment(todo.dueDate).format('HH:mm')}</i>}
                     bubbleStyle={{
                         backgroundColor: ICON_COLOR[todo.state],
-                        border: 'none'
+                        border: 'none',
+                        borderRadius: '45%',
+                        width: '3.5rem',
+                        height: '2.5rem'
+                    }}
+                    iconStyle={{
+                        width: '3.5rem',
+                        height: '2.5rem'
                     }}
                 />;
             })

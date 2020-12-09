@@ -20,27 +20,9 @@
     },
     {
       "dueDate": "2020-12-09T03:01:51.677Z",
-      "description": "",
+      "description": "no description",
       "state": "",
       "id": 4
-    },
-    {
-      "dueDate": "2020-12-09T03:01:57.320Z",
-      "description": "",
-      "state": "",
-      "id": 5
-    },
-    {
-      "dueDate": "2020-12-24T03:15:45.743Z",
-      "description": "",
-      "state": "",
-      "id": 6
-    },
-    {
-      "dueDate": "2020-12-09T03:21:22.349Z",
-      "description": "",
-      "state": "",
-      "id": 7
     }
   ]
 }

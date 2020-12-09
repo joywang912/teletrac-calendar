@@ -1,7 +1,16 @@
+.time-line {
+  margin-top: 2rem;
+  > div {
+    display: flex;
+  }
+}
 .timeline-description {
   font-size: 1.5rem;
   min-height: 3.4rem;
+  margin-left: 1rem;
 }
 
 .timeline-icon {
+  font-weight: 500;
+  font-size: 1.1rem;
 }
