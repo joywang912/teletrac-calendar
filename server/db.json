@@ -1,10 +1,16 @@
 {
-    "todo": [
-        {
-            "dueDate": "",
-            "description": "description",
-            "state": "completed"
-        
-        }
-    ]
+  "todos": [
+    {
+      "id": 1,
+      "dueDate": "2020-12-09T20:00:00",
+      "description": "test todo 1",
+      "state": "completed"
+    },
+    {
+      "id": 2,
+      "dueDate": "2020-12-09T16:00:00",
+      "description": "test todo 2",
+      "state": "postponed"
+    }
+  ]
 }

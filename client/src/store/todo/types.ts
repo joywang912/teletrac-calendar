@@ -1,5 +1,7 @@
+import { Moment } from 'moment';
+
 export interface ToDo {
-    dueDate: Date;
+    dueDate: Moment;
     description: string;
-    state: 'completed' | 'postponed' | 'undone';
+    state: 'completed' | 'postponed' | 'undone' | '';
 }

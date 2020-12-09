@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { ToDo } from '../../store/todo/types';
 import { RootState } from '../../store';
-import './todoSummary.scss';
+import { fetchTodos } from '../../store/todo/actions';
 import AddTodoModal from "./AddTodoModal";
+import './todoSummary.scss';
 
 const TodoSummary = (props: Props) => {
-    const { todoList } = props;
+    const { todoList, fetchTodos } = props;
     const [showAddModal, setShowAddModal] = useState(false);
     const handleAddModalOpen = () => setShowAddModal(true);
     const handleAddModalClose = () => setShowAddModal(false);
@@ -14,6 +15,12 @@ const TodoSummary = (props: Props) => {
     const completedList = todoList.filter(el => el.state === 'completed');
     const postponedList = todoList.filter(el => el.state === 'postponed');
     const undoneList = todoList.filter(el => el.state === 'undone');
+
+
+    useEffect(() => {
+        fetchTodos();
+    }, [fetchTodos]);
+
     return <div className="todo-summary">
         <hr />
         <div className="row no-gutters">
@@ -54,5 +61,6 @@ const mapStateToProps = (state: RootState) => {
 
 interface Props {
     todoList: Array<ToDo>;
+    fetchTodos: () => void;
 }
-export default connect(mapStateToProps)(TodoSummary);
+export default connect(mapStateToProps, { fetchTodos })(TodoSummary);

@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
-import { fetchWeather } from '../../api/weather';
+import { fetchWeather, WeatherCurrent } from '../../api/weather';
 import './weather.scss';
 
-interface WeatherCurrent {
-    description: string;
-    icon: string;
-    temp: string;
-}
 const Weather = () => {
     const [weatherCurr, setWeatherCurr] = useState<WeatherCurrent>();
 
