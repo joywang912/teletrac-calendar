@@ -18,10 +18,11 @@ interface Props {
 const AddTodoModal = (props: Props) => {
     const { show, handleClose, createTodo } = props;
     const [dueDateTime, setDueDateTime] = useState<Moment>(moment());
+    const [description, setDescription] = useState<string>('description');
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        createTodo({ dueDate: dueDateTime, description: '', state: '' });
+        createTodo({ dueDate: dueDateTime, description, state: '' });
         handleClose();
     };
 
@@ -34,7 +35,12 @@ const AddTodoModal = (props: Props) => {
 
                 <div className="mb-3">
                     <label htmlFor="addTodoDescription" className="form-label">Description</label>
-                    <input type="text" placeholder="Description" className="form-control" id="addTodoDescription" aria-describedby="emailHelp" />
+                    <input type="text"
+                        placeholder="Description"
+                        className="form-control"
+                        id="addTodoDescription"
+                        onChange={e => setDescription(e.target.value)}
+                        value={description} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="addTodoDueDate" className="form-label">Due Date</label>

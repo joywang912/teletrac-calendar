@@ -1,5 +1,5 @@
 import { Timeline, TimelineEvent } from 'react-event-timeline';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import { connect } from "react-redux";
 import { RootState } from '../../store';
 import { ToDo } from '../../store/todo/types';
@@ -12,12 +12,20 @@ const ICON_COLOR = {
     '': 'var(--blue)'
 };
 const TimeLine = (props: Props) => {
-    const { todoList } = props;
+    const { todoList, dateSelected } = props;
     const todosSelectedDay = todoList.filter((el: ToDo) => {
-        return moment(el.dueDate).isSame(moment(), 'day');
+        return moment(el.dueDate).isSame(dateSelected, 'day');
     });
 
+    if (!todosSelectedDay.length) {
+        return <div className="time-line">No To Do Event</div>;
+    }
+
     return <div className="time-line">
+        <div className="time-line-date">
+            <div>{dateSelected.format('DD MMMM')}</div>
+            <h3>{dateSelected.format('dddd')}</h3>
+        </div>
         <Timeline style={{
             width: 'auto',
             display: 'inline-block'
@@ -50,12 +58,14 @@ const TimeLine = (props: Props) => {
 
 const mapStateToProps = (state: RootState) => {
     return {
-        todoList: state.todoList
+        todoList: state.todoList,
+        dateSelected: state.dateSelected
     };
 };
 
 interface Props {
     todoList: Array<ToDo>;
+    dateSelected: Moment;
 }
 
 export default connect(mapStateToProps)(TimeLine);
